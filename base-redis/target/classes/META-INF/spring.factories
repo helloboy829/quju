@@ -1,0 +1,4 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+cn.codefit.base.redis.util.RedisUtil,\
+cn.codefit.base.redis.config.RedisConfig,\
+cn.codefit.base.redis.config.RedissonConfig

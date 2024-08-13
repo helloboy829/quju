@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding" defaultCharsetForPropertiesFiles="UTF-8">
+    <file url="file://$PROJECT_DIR$/base-qiniu/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/base-redis/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/quju-app/quju-app-api/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/quju-app/quju-app-model/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/quju-app/quju-app-service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/quju-app/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/quju-app/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/quju-auth/quju-auth-api/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/quju-auth/quju-auth-model/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/quju-auth/quju-auth-service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/quju-auth/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/quju-auth/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/quju-base/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/quju-common/quju-common-api/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/quju-common/quju-common-model/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/quju-common/quju-common-service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/quju-common/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/quju-common/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/quju-gateway/quju-gateway-api/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/quju-gateway/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/quju-gateway/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/quju-system/quju-system-api/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/quju-system/quju-system-model/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/quju-system/quju-system-service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/quju-system/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/quju-system/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/resources" charset="UTF-8" />
+  </component>
+</project>

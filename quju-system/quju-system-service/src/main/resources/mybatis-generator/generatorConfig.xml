@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<!-- 配置生成器 -->
+<generatorConfiguration>
+    <!--执行generator插件生成文件的命令：
+    call mvn mybatis-generator:generate -e -->
+    <!-- 引入配置文件 -->
+    <properties resource="bootstrap.properties"/>
+    <!--classPathEntry:数据库的JDBC驱动,换成你自己的驱动位置
+    可选 -->
+    <!--<classPathEntry
+    location="D:generator_mybatismysql-connector-java-5.1.24-bin.jar" /> -->
+
+    <!-- 一个数据库一个context -->
+    <!--defaultModelType="flat"
+    大数据字段，不分表 -->
+    <!--
+        MyBatis3Simple:使用这个值，不会生成example类，仅支持很少的动态SQL。
+        MyBatis3 :会生成example类，支持几乎所有的动态子句。
+        -->
+    <!--<context
+    id="MysqlTables" targetRuntime="MyBatis3Simple" defaultModelType="flat">-->
+
+    <context id="MysqlTables" targetRuntime="MyBatis3" defaultModelType="flat">
+        <!-- 自动识别数据库关键字，默认false，如果设置为true，根据SqlReservedWords中定义的关键字列表；
+        一般保留默认值，遇到数据库关键字（Java关键字），使用columnOverride覆盖 -->
+        <property name="autoDelimitKeywords" value="true"/>
+        <!-- 生成的Java文件的编码 -->
+        <property name="javaFileEncoding" value="utf-8"/>
+        <!-- beginningDelimiter和endingDelimiter：指明数据库的用于标记数据库对象名的符号，比如ORACLE就是双引号，MYSQL默认是`反引号； -->
+        <property name="beginningDelimiter" value="`"/>
+        <property name="endingDelimiter" value="`"/>
+
+        <!-- 格式化java代码 -->
+        <property name="javaFormatter" value="org.mybatis.generator.api.dom.DefaultJavaFormatter"/>
+        <!-- 格式化XML代码 -->
+        <property name="xmlFormatter" value="org.mybatis.generator.api.dom.DefaultXmlFormatter"/>
+        <plugin type="org.mybatis.generator.plugins.SerializablePlugin"/>
+
+        <plugin type="org.mybatis.generator.plugins.ToStringPlugin"/>
+        <plugin type="cn.codefit.quju.system.util.UnmergeableXmlMappersPlugin"/>
+
+        <!-- 注释 -->
+        <!--   <commentGenerator >
+            <property name="suppressAllComments" value="false"/>&lt;!&ndash; 是否取消注释 &ndash;&gt;
+            <property name="suppressDate" value="true" /> &lt;!&ndash; 是否生成注释代时间戳&ndash;&gt;
+        </commentGenerator>-->
+
+        <!-- 自定义注释生成器 -->
+        <commentGenerator type="cn.codefit.quju.mybatis.MySQLCommentGenerator">
+            <property name="author" value="CodeFit.cn"/>
+            <property name="dateFormat" value="yyyy/MM/dd"/>
+        </commentGenerator>
+
+
+        <!-- jdbc连接 -->
+        <!--<jdbcConnection
+        driverClass="com.mysql.jdbc.Driver" connectionURL="${spring.datasource.url}"
+        userId="${spring.datasource.username}" password="${spring.datasource.password}" />-->
+        <!-- ?tinyInt1isBit=false 解决 Tinyint映射为Byte和Boolean 问题 -->
+        <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
+                        connectionURL="jdbc:mysql://119.91.60.138:3306/db_quju_01?tinyInt1isBit=false&amp;nullCatalogMeansCurrent=true"
+                        userId="codefit"
+                        password="codefitTest123!"/>
+        <!-- 类型转换 -->
+        <!--   <javaTypeResolver>
+           &lt;!&ndash; true：使用BigDecimal对应DECIMAL和 NUMERIC数据类型
+            false：默认,
+               scale>0;length>18：使用BigDecimal;
+               scale=0;length[10,18]：使用Long；
+               scale=0;length[5,9]：使用Integer；
+               scale=0;length<5：使用Short；&ndash;&gt;
+        <property name="forceBigDecimals" value="false"/>
+
+        </javaTypeResolver>-->
+
+        <!-- 指定 MyJavaTypeResolver 的路径 -->
+        <javaTypeResolver type="cn.codefit.quju.system.util.MyJavaTypeResolver"/>
+
+
+        <!-- 生成实体类地址 -->
+        <javaModelGenerator targetPackage="cn.codefit.quju.system.model.po"
+                            targetProject="${mybatis.project}">
+            <property name="enableSubPackages" value="false"/>
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+
+        <!-- 生成mapxml文件 -->
+        <sqlMapGenerator targetPackage="mapper" targetProject="${mybatis.resources}">
+            <property name="enableSubPackages" value="false"/>
+        </sqlMapGenerator>
+
+        <!-- 生成mapxml对应client，也就是接口dao -->
+        <javaClientGenerator targetPackage="cn.codefit.quju.system.model.dao"
+                             targetProject="${mybatis.project}" type="XMLMAPPER">
+            <property name="enableSubPackages" value="false"/>
+        </javaClientGenerator>
+
+        <!--
+        table可以有多个,每个数据库中的表都可以写一个table，tableName表示要匹配的数据库表,也可以在tableName属性中通过使用%通配符来匹配所有数据库表,只有匹配的表才会自动生成文件 -->
+
+
+        <!-- <table tableName="sys_user" enableCountByExample="true" enableUpdateByExample="true"
+        enableDeleteByExample="true"
+               enableSelectByExample="true" selectByExampleQueryId="true">
+            <property name="useActualColumnNames" value="false" />
+            &lt;!&ndash; 数据库表主键 &ndash;&gt;
+            <generatedKey column="id" sqlStatement="Mysql" identity="true" />
+        </table>-->
+
+
+        <!--<table
+        tableName="sys_user" enableCountByExample="true" enableUpdateByExample="true"
+        enableDeleteByExample="true" enableSelectByExample="true"
+        selectByExampleQueryId="true"></table>-->
+        <!--<table
+        tableName="sys_role" enableCountByExample="true" enableUpdateByExample="true"
+        enableDeleteByExample="true" enableSelectByExample="true"
+        selectByExampleQueryId="true"></table>-->
+        <!--<table
+        tableName="sys_menu" enableCountByExample="true" enableUpdateByExample="true"
+        enableDeleteByExample="true" enableSelectByExample="true"
+        selectByExampleQueryId="true"></table>-->
+        <!--<table
+        tableName="applet_user" enableCountByExample="true" enableUpdateByExample="true"
+        enableDeleteByExample="true" enableSelectByExample="true"
+        selectByExampleQueryId="true"></table>-->
+        <!--<table
+        tableName="bas_activity" enableCountByExample="true" enableUpdateByExample="true"
+        enableDeleteByExample="true" enableSelectByExample="true"
+        selectByExampleQueryId="true"></table>-->
+        <!--<table
+        tableName="bas_order" enableCountByExample="true" enableUpdateByExample="true"
+        enableDeleteByExample="true" enableSelectByExample="true"
+        selectByExampleQueryId="true"></table>-->
+
+        <!--<table
+        tableName="sys_oauth_client" enableCountByExample="true" enableUpdateByExample="true"
+        enableDeleteByExample="true" enableSelectByExample="true"
+        selectByExampleQueryId="true"></table>-->
+        <!--<table
+        tableName="sys_dept" enableCountByExample="true" enableUpdateByExample="true"
+        enableDeleteByExample="true" enableSelectByExample="true"
+        selectByExampleQueryId="true"></table>-->
+        <!--<table
+        tableName="sys_role_permission" enableCountByExample="true" enableUpdateByExample="true"
+        enableDeleteByExample="true" enableSelectByExample="true"
+        selectByExampleQueryId="true"></table>-->
+        <!--<table
+        tableName="sys_role_menu" enableCountByExample="true" enableUpdateByExample="true"
+        enableDeleteByExample="true" enableSelectByExample="true"
+        selectByExampleQueryId="true"></table>-->
+        <!--<table
+        tableName="sys_permission" enableCountByExample="true" enableUpdateByExample="true"
+        enableDeleteByExample="true" enableSelectByExample="true"
+        selectByExampleQueryId="true"></table>-->
+        <!--<table
+        tableName="sys_user_role" enableCountByExample="true" enableUpdateByExample="true"
+        enableDeleteByExample="true" enableSelectByExample="true"
+        selectByExampleQueryId="true"></table>-->
+        <!--<table
+        tableName="sys_dictionary" enableCountByExample="true" enableUpdateByExample="true"
+        enableDeleteByExample="true" enableSelectByExample="true"
+        selectByExampleQueryId="true"></table>-->
+        <!--<table
+        tableName="sys_dictionary_item" enableCountByExample="true" enableUpdateByExample="true"
+        enableDeleteByExample="true" enableSelectByExample="true"
+        selectByExampleQueryId="true"></table>-->
+    </context>
+</generatorConfiguration>

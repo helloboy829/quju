@@ -1,0 +1,93 @@
+server:
+  port: 8083
+
+spring:
+  profiles:
+    active: dev
+  main:
+    allow-circular-references: true
+
+  redis:
+#    database: 9
+    host: 127.0.0.1
+    port: 6379
+#    password:
+    database:  0
+  #    password: codefitTest123!
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/db_quju_01
+    username: root
+    password: 123456
+
+#logging:
+#  config: classpath:log4j2-dev.xml
+
+qiniu:
+  uploadPath: ./wx/export
+  downloda:
+    pagesize: 1000
+  accessKey: AOy2tOlo7XDQSGGErFg3hqR7ZMRkXan6hS9VGWN0
+  secretKey: Oxb-YymCDqcVNdQt782A1Ido4Bic1Pb0zQegDuTw
+  bucket: imgestest
+
+# 其他应用程序配置
+
+#server:
+#  port: 8083
+#spring:
+#  application:
+#    name: quju-system-service
+#  profiles:
+#    active: dev
+#  main:
+#    allow-circular-references: true
+##  profiles:
+#    active: dev1327
+#  cloud:
+#    nacos:
+#      username: codefit
+#      password: codefitTest123!
+#      config:
+##        server-addr: 127.0.0.1:8848
+#        server-addr: 119.91.60.138:8848
+#        file-extension: yaml
+#        namespace: 6407a276-47dc-4dbb-913d-14f1d744142b
+#      discovery:
+##        server-addr: 127.0.0.1:8848
+#        server-addr: 119.91.60.138:8848
+#        namespace: 6407a276-47dc-4dbb-913d-14f1d744142b
+#
+dubbo:
+  application:
+    name: quju-system-service
+  protocol:
+    name: dubbo
+    port: -1
+  registry:
+    address: nacos://127.0.0.1:8848
+#    address: nacos://119.91.60.138:8848?namespace=dev-team-02&username=codefit&password=codefitTest123!
+  cloud:
+    subscribed-services: quju-system-service
+  consumer:
+    check: false
+#
+system:
+  change:
+    lock:
+      prefix: quju:redisson.system.lock
+
+#logging:
+#  config: classpath:log4j2-dev.xml
+#
+mybatis:
+  mapper-locations: classpath*:mapper*/*Mapper.xml,classpath:/mapper/**/*.xml
+  type-aliases-package: cn.codefit.quju.system.model.po,cn.codefit.quju.system.api.dto
+
+#  configuration:
+#    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+pagehelper:
+  support-methods-arguments: false
+
+

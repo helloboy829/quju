@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="quju-system-api" />
+        <module name="quju-app-service" />
+        <module name="quju-auth-model" />
+        <module name="quju-gateway" />
+        <module name="quju-auth-service" />
+        <module name="quju-base" />
+        <module name="quju-auth-api" />
+        <module name="quju-system-model" />
+        <module name="quju-app-model" />
+        <module name="quju-common-model" />
+        <module name="quju-system-service" />
+        <module name="quju-common-api" />
+        <module name="quju-common-service" />
+        <module name="base-redis" />
+        <module name="base-qiniu" />
+        <module name="quju-app-api" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel target="17">
+      <module name="quju-gateway-api" target="11" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="base-qiniu" options="-parameters" />
+      <module name="base-redis" options="-parameters" />
+      <module name="quju-app" options="" />
+      <module name="quju-app-api" options="-parameters" />
+      <module name="quju-app-model" options="-parameters" />
+      <module name="quju-app-service" options="-parameters" />
+      <module name="quju-auth" options="" />
+      <module name="quju-auth-api" options="-parameters" />
+      <module name="quju-auth-model" options="-parameters" />
+      <module name="quju-auth-service" options="-parameters" />
+      <module name="quju-base" options="-parameters" />
+      <module name="quju-cloud" options="" />
+      <module name="quju-common" options="" />
+      <module name="quju-common-api" options="-parameters" />
+      <module name="quju-common-model" options="-parameters" />
+      <module name="quju-common-service" options="-parameters" />
+      <module name="quju-gateway" options="-parameters" />
+      <module name="quju-gateway-api" options="-parameters" />
+      <module name="quju-system" options="" />
+      <module name="quju-system-api" options="-parameters" />
+      <module name="quju-system-model" options="-parameters" />
+      <module name="quju-system-service" options="-parameters" />
+    </option>
+  </component>
+</project>

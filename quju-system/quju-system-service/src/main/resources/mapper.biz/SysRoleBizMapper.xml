@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.codefit.quju.system.service.biz.dao.SysRoleBizMapper">
+    <resultMap id="BaseResultMap" type="cn.codefit.quju.system.api.dto.SysRoleDto">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+        <result column="code" jdbcType="VARCHAR" property="code"/>
+        <result column="sort" jdbcType="INTEGER" property="sort"/>
+        <result column="status" jdbcType="TINYINT" property="status"/>
+        <result column="platform" jdbcType="INTEGER" property="platform"/>
+        <result column="deleted" jdbcType="TINYINT" property="deleted"/>
+        <result column="is_deleted" jdbcType="TINYINT" property="isDeleted"/>
+        <result column="create_user" jdbcType="VARCHAR" property="createUser"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="create_user_name" jdbcType="VARCHAR" property="createUserName"/>
+        <result column="modify_time" jdbcType="TIMESTAMP" property="modifyTime"/>
+        <result column="modify_user" jdbcType="VARCHAR" property="modifyUser"/>
+        <result column="modify_user_name" jdbcType="VARCHAR" property="modifyUserName"/>
+        <result column="remark" jdbcType="VARCHAR" property="remark"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        id,
+        `name`,
+        code,
+        sort,
+        `status`,
+        platform,
+        deleted,
+        is_deleted,
+        create_user,
+        create_time,
+        create_user_name,
+        modify_time,
+        modify_user,
+        modify_user_name,
+        remark
+    </sql>
+
+
+    <select id="selectByCondition" parameterType="map" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from sys_role
+        where 1=1
+
+        <if test="id != null">
+            and id = #{id,jdbcType=BIGINT}
+        </if>
+        <if test="name != null and name != ''">
+            and `name` like concat('%', #{name}, '%')
+        </if>
+        <if test="code != null and code != ''">
+            and code like concat('%', #{code}, '%')
+        </if>
+        <if test="sort != null">
+            and sort = #{sort,jdbcType=INTEGER}
+        </if>
+        <if test="status != null">
+            and `status` = #{status,jdbcType=TINYINT}
+        </if>
+        <if test="platform != null">
+            and platform = #{platform,jdbcType=INTEGER}
+        </if>
+        <if test="deleted != null">
+            and deleted = #{deleted,jdbcType=TINYINT}
+        </if>
+        <if test="isDeleted != null">
+            and is_deleted = #{isDeleted,jdbcType=TINYINT}
+        </if>
+        <if test="createUser != null">
+            and create_user = #{createUser,jdbcType=VARCHAR}
+        </if>
+        <if test="createTime != null">
+            and create_time = #{createTime,jdbcType=TIMESTAMP}
+        </if>
+        <if test="createUserName != null">
+            and create_user_name = #{createUserName,jdbcType=VARCHAR}
+        </if>
+        <if test="modifyTime != null">
+            and modify_time = #{modifyTime,jdbcType=TIMESTAMP}
+        </if>
+        <if test="modifyUser != null">
+            and modify_user = #{modifyUser,jdbcType=VARCHAR}
+        </if>
+        <if test="modifyUserName != null">
+            and modify_user_name = #{modifyUserName,jdbcType=VARCHAR}
+        </if>
+        <if test="remark != null and remark != ''">
+            and remark like concat('%', #{remark}, '%')
+        </if>
+
+        <choose>
+            <when test="fieldSort != null and fieldSort != '' and (orderSort == 'desc' or orderSort == 'asc')">
+                order by ${fieldSort} ${orderSort} ,sort desc
+            </when>
+            <otherwise>
+                order by sort desc
+            </otherwise>
+        </choose>
+    </select>
+
+
+    <select id="checkSysRoleCode" parameterType="map" resultType="java.lang.Integer">
+        select count(id) from sys_role where 1=1
+
+        <if test="code != null and code != ''">
+            and code = #{code}
+        </if>
+
+        <if test="noId != null">
+            and id != #{noId}
+        </if>
+        and is_deleted=0
+    </select>
+</mapper>
